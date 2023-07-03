@@ -2,13 +2,17 @@ import Banner from '@/shared/components/Banner';
 import { Box, Container, Modal, Typography } from '@mui/material';
 import Image from 'next/image';
 import React, { useState } from 'react';
+interface IGalleryProps {
+  isMobile: boolean;
+}
 
-function Gallery() {
+function Gallery({ isMobile }: IGalleryProps) {
   const imageFiles: string[] = ['gal-1.jpg', 'gal-2.jpg', 'gal-3.jpg', 'gal-4.jpg', 'gal-5.jpg', 'gal-6.jpg', 'gal-7.jpg', 'gal-8.jpg'];
   const [selectedImage, setSelectedImage] = useState<string>();
   const [isFocused, setIsFocused] = useState<boolean>(false);
 
   const handleFocus = (image: string) => {
+    if (isMobile) return;
     setSelectedImage(image);
     setIsFocused(true);
   };

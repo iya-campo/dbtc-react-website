@@ -3,7 +3,11 @@ import { Box, Container, List, ListItem, Typography } from '@mui/material';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 
-function About() {
+interface IAboutProps {
+  screen: string;
+}
+
+function About({ screen }: IAboutProps) {
   const coreValues: string[] = [
     'Faith (God fearing, witness to gospel values, charitable, Marian)',
     'Integrity (honesty, responsibility, accountability, transparency)',
@@ -11,23 +15,6 @@ function About() {
     'Collaboration (collaborative, cooperative)',
     'Service (competent; professional; concern for stakeholders, community and environment, nationalistic, just, leader)',
   ];
-  const [screen, setScreen] = useState<string>('desktop');
-
-  useEffect(() => {
-    window.addEventListener('resize', handleResize);
-    handleResize();
-    return () => window.removeEventListener('resize', handleResize);
-  });
-
-  const handleResize = () => {
-    if (window.innerWidth > 767) {
-      setScreen('desktop');
-    } else if (window.innerWidth <= 767 && window.innerWidth >= 470) {
-      setScreen('tablet');
-    } else if (window.innerWidth < 470) {
-      setScreen('mobile');
-    }
-  };
 
   return (
     <Box>
@@ -105,6 +92,7 @@ function About() {
                 src='/images/about/side-pic-1.jpg'
                 height={screen === 'desktop' ? 500 : screen === 'tablet' ? 300 : 200}
                 width={screen === 'desktop' ? 650 : screen === 'tablet' ? 450 : 350}
+                style={{ marginTop: 8, marginBottom: 8 }}
               ></Image>
             </Box>
           </Box>

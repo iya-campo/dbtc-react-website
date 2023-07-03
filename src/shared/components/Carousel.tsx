@@ -45,7 +45,7 @@ function Carousel({ images, isMobile }: ICarouselProps) {
           backgroundImage: `url('${selectedImage.image}')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          height: !isMobile ? '70vh' : '75vh',
+          height: !isMobile ? '70vh' : '85vh',
         }}
       >
         {selectedImage.caption && (

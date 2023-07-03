@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect, useState } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import Banner from '@/shared/components/Banner';
 import News, { INews } from '@/data/NewsData';
 import NewsModal from '@/shared/components/NewsModal';
@@ -13,7 +13,7 @@ function NewsPage() {
   const [displayedNews, setDisplayedNews] = useState<INews[]>(News);
   const [selectedNews, setSelectedNews] = useState<INews>();
   const [filter, setFilter] = useState<string>('all');
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState<number>(1);
   const [open, setOpen] = useState<boolean>(false);
 
   const handlePageChange = (event: ChangeEvent<any>, value: number) => {

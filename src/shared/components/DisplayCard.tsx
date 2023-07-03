@@ -12,7 +12,7 @@ interface IDisplayCardProps {
 
 function DisplayCard({ name, image, link }: IDisplayCardProps) {
   return (
-    <Box display='flex' flexDirection='column' justifyContent='space-between' alignItems='center' width={250} height={250}>
+    <Box display='flex' flexDirection='column' justifyContent='space-between' alignItems='center' width={250} height={210}>
       <Typography component='p' variant='body1' textAlign='center' textTransform='uppercase' fontWeight='bold'>
         {name}
       </Typography>

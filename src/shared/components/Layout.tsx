@@ -5,32 +5,17 @@ import { Box } from '@mui/material';
 
 interface ILayoutProps {
   children: ReactNode;
+  isMobile: boolean;
 }
 
-function Layout({ children }: ILayoutProps) {
-  const [isMobile, setIsMobile] = useState<boolean>(false);
-
-  useEffect(() => {
-    window.addEventListener('resize', handleResize);
-    handleResize();
-    return () => window.removeEventListener('resize', handleResize);
-  });
-
-  const handleResize = () => {
-    if (window.innerWidth <= 767) {
-      setIsMobile(true);
-    } else {
-      setIsMobile(false);
-    }
-  };
-
+function Layout({ children, isMobile }: ILayoutProps) {
   return (
     <Box display='flex' flexDirection='column' justifyContent='space-between' height='100%' position='relative'>
-      <Navbar />
+      <Navbar isMobile={isMobile} />
       <Box display='flex' flexDirection='column' flexGrow={1} pt={!isMobile ? 19 : 12} pb={8}>
         {children}
       </Box>
-      <Footer />
+      <Footer isMobile={isMobile} />
     </Box>
   );
 }

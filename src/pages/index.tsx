@@ -12,23 +12,11 @@ import { Box, Container, Typography } from '@mui/material';
 
 const inter = Inter({ subsets: ['latin'] });
 
-export default function Home() {
-  const [isMobile, setIsMobile] = useState<boolean>(false);
+interface IHomeProps {
+  isMobile: boolean;
+}
 
-  useEffect(() => {
-    window.addEventListener('resize', handleResize);
-    handleResize();
-    return () => window.removeEventListener('resize', handleResize);
-  });
-
-  const handleResize = () => {
-    if (window.innerWidth <= 767) {
-      setIsMobile(true);
-    } else {
-      setIsMobile(false);
-    }
-  };
-
+export default function Home({ isMobile }: IHomeProps) {
   return (
     <main className={inter.className}>
       <Carousel images={CarouselImages} isMobile={isMobile} />
@@ -51,7 +39,7 @@ export default function Home() {
           <Typography component='h6' variant='h6' textAlign='center' textTransform='uppercase' fontWeight='bold'>
             Programs
           </Typography>
-          <Box display='flex' flexWrap='wrap' justifyContent='center' alignItems='center' gap={4}>
+          <Box display='flex' flexWrap='wrap' justifyContent='center' alignItems='center' rowGap={6} columnGap={4}>
             {Programs.map((program: IPrograms, index: number) => (
               <DisplayCard key={index} name={program.name} image={program.image} link={program.link}></DisplayCard>
             ))}
